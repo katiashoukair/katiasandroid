@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "834368340442",
+    "project_id": "katiasproject",
+    "storage_bucket": "katiasproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834368340442:android:e7b7f99a2a3e9b86dc40e3",
+        "android_client_info": {
+          "package_name": "com.example.katiasproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834368340442-eo7f846p56q49u8ni1jmr8ole3nrrlmr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTl1RP0pUyVupPdLkFMTjpcOei3Z-PK9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834368340442-eo7f846p56q49u8ni1jmr8ole3nrrlmr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
