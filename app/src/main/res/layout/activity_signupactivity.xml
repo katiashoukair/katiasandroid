@@ -7,15 +7,17 @@
     tools:context=".Signupactivity">
 
     <EditText
-        android:id="@+id/fullnametxt"
+        android:id="@+id/fullNameEditText"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="140dp"
         android:ems="10"
         android:hint="full name "
         android:inputType="text"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,39 +25,42 @@
         android:id="@+id/emailtxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullnametxt" />
+        app:layout_constraintTop_toBottomOf="@+id/fullNameEditText" />
 
     <EditText
         android:id="@+id/passwordtxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailtxt" />
 
     <EditText
-        android:id="@+id/confirmpass"
+        android:id="@+id/repasswordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="confirm Passsword"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,5 +75,30 @@
         android:layout_marginEnd="160dp"
         android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmpass" />
+        app:layout_constraintTop_toBottomOf="@+id/repasswordEditText" />
+
+    <TextView
+        android:id="@+id/errortxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="103dp"
+        android:layout_marginEnd="176dp"
+        android:text="Email or password is incorrect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUp"
+        tools:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="262dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:text="Sign Up"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
