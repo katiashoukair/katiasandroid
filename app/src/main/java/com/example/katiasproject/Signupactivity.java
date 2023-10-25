@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,9 @@ public class Signupactivity extends AppCompatActivity {
     EditText repasswordEditText;
     Button signUp;
     TextView errortxt;
+    EditText AdminCode;
+    Switch isAdmin;
+    Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,9 @@ public class Signupactivity extends AppCompatActivity {
         repasswordEditText=findViewById(R.id.repasswordEditText);
         signUp =findViewById(R.id.signUp);
         errortxt=findViewById(R.id.errortxt);
+        isAdmin= findViewById(R.id.switchadmin);
+        AdminCode = findViewById(R.id.codenum);
+
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +51,9 @@ public class Signupactivity extends AppCompatActivity {
             }
         });
     }
+
+
+
     private void createNewAccount(){
         errortxt.setVisibility(View.GONE);
         if(fullNameEditText.getText().toString().equals("")){
@@ -71,6 +81,13 @@ public class Signupactivity extends AppCompatActivity {
             errortxt.setText("password dosn't match");
             return;
         }
+
+        if (isAdmin.isChecked()&& ! AdminCode.getText().toString().equals("16102006")) {
+            errortxt.setVisibility(View.VISIBLE);
+            errortxt.setText("admin password is incorrect");
+            return;
+        }
+
         final FirebaseAuth mAuth=FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(emailtxt.getText().toString(), passwordEditText.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -79,9 +96,13 @@ public class Signupactivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String name = fullNameEditText.getText().toString();
+                            if (isAdmin.isChecked()){
+                                name = "admin: " + name;
+                        }
 
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(fullNameEditText.getText().toString())
+                                    .setDisplayName(name)
                                     .build();
 
                             user.updateProfile(profileUpdates)
@@ -102,14 +123,6 @@ public class Signupactivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
-
-
-
-
-
 
     }
 }

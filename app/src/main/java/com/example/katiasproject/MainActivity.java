@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // Initialize Firebase Auth
-        mAuth=FirebaseAuth.getInstance();
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar); //Ignore red line errors
         setSupportActionBar(toolbar);
 
@@ -54,8 +54,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user =mAuth.getCurrentUser();
         if (user != null) {
+            Toast.makeText(this, user.getDisplayName(), Toast.LENGTH_SHORT).show();
+
+            if(user.getDisplayName().startsWith("admin: ")){
+                Intent i = new Intent(MainActivity.this, AddProductActivity.class);
+                startActivity(i);
+            }
             //user is signed in
             View headeView = navigationView.getHeaderView(0);
             Username = headeView.findViewById(R.id.username4);
@@ -65,25 +71,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
 
             // No user is signed
-            Intent i = new Intent(MainActivity.this, AddProductActivity.class);
+            Intent i = new Intent(MainActivity.this, Loginactivity.class);
             startActivity(i);
         }
     }
-
-    @Override
-    protected void onResume() {
-
-        super.onResume();
-        Toast.makeText(this, "start!", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onRestart() {
-
-        super.onRestart();
-        Toast.makeText(this, "start!", Toast.LENGTH_SHORT).show();
-    }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

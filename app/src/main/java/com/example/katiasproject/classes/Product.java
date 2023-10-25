@@ -7,10 +7,7 @@ package com.example.katiasproject.classes;
         import android.content.ContentValues;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
-        import android.graphics.Bitmap;
         import android.provider.BaseColumns;
-
-        import com.example.katiasproject.classes.SqlInterface;
 
 public class Product implements SqlInterface{
 
@@ -35,6 +32,10 @@ public class Product implements SqlInterface{
         this.stock=stock;
         this.imageByte = image;
         this.color=color;
+    }
+
+    public Product(Product p) {
+
     }
     //endregion
 
@@ -115,7 +116,31 @@ public class Product implements SqlInterface{
                 sortOrder);
         return c;
     }
+    public Cursor SelectById(SQLiteDatabase db,String id) {
+        String[] projection = {
+                BaseColumns._ID,
+                COLUMN_PRODUCT_NAME,
+                COLUMN_PRODUCT_DESCRIPTION,
+                COLUMN_PRODUCT_IMAGE,
+                COLUMN_PRODUCT_STOCK,
+                COLUMN_PRODUCT_PRICE,
+                COLUMN_PRODUCT_RATING,
+                COLUMN_PRODUCT_COLOR,
 
+        };
+        String selection = BaseColumns._ID + " = ?";
+        String[] selectionArgs = {id};
+
+        Cursor c = db.query(
+                TABLE_PRODUCT,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null  );
+        return c;
+    }
     //endregion
 
     //region Setter and Getter
@@ -183,4 +208,5 @@ public class Product implements SqlInterface{
     public void setImageByte(byte[] imageByte) {
         this.imageByte = imageByte;
     }
+
 }
